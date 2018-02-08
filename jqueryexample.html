@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+	// window.addEventListener("DOMContentLoaded",init);
+	// function init(){
+	// 	var btnGreet=document.getElementById("btnGreet");
+	// 	btnGreet.addEventListener('click',onBtnGreetClick);
+	// }
+	// function onBtnGreetClick(){
+	// 	var txtName=document.getElementById('txtName').value;
+	// 	var msg="Hello world !!"+txtName;
+	// 	console.log("click",msg);
+	// 	document.getElementById('divMessage').innerHTML=msg;
+	// }
+	// $(function(){$("#btnGreet").click(function(){
+	// 		$("#divMessage").html("hi"+$("#txtName").val()+"Have a nice Day!!");
+	// 		})
+	// 	});
+
+$(document).ready(function(){
+	$("#btnGreet").click(function(){
+		$("#divMessage").html("hi"+$("#txtName").val()+"Have a nice Day!!");
+			})
+	})
+		
+
+	
+
+</script>
+</head>
+<body>
+	<h1>Greeting App</h1>
+	<label for="">Name:</label><input type="text" name="" id="txtName">
+	<input type="button" value="Greet" id="btnGreet">	
+	<div id="divMessage">
+		Messages div
+	</div>	
+
+
+
+</body>
+</html>
+<!-- jquery function take sector and context
+selector 
+	1)domnode,
+	2)string
+	3)array of domnodes
+	4)function -->

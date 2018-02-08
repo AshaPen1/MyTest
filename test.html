@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script >
+		(function (){
+			var count=0;
+				function btnTrackClick(){
+					count++;
+					document.getElementById("divMessage").innerHTML = count;
+				};
+				
+				function init(){
+					document.getElementById("btnTrack").addEventListener("click",btnTrackClick);
+				};
+			window.addEventListener("DOMContentLoaded",init);
+		})();
+
+	</script>
+</head>
+<body>
+	<input type="button" value="Track" id="btnTrack" >
+
+	<div id="divMessage">my count </div>
+</body>
+</html>
+

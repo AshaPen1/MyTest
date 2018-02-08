@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+	</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/template" id="calTemp">
+			<div class="content">
+				<div class="feild">
+					<label  for="">Basic:</label>
+					<input type="text" name="" id="txtBasic">
+				</div>
+				<div class="feild">
+						<label for="">HRA:</label>
+						<input type="text" name="" id="txtHra">
+				</div>
+
+				<div class="feild">
+					<label for="" >DA:</label>
+					<input type="text" name="" id="txtDa">
+				</div>
+				<div class="feild">
+					<label  for="">Tax:</label>
+					<input type="range" name="" id="rangeTax" min="0" max="30" value="0">
+					<span id="spanTax">[Tax]</span>
+				</div>
+				<div class="feild">
+					<input type="button" value="calculate" id="btnCalculate">
+				</div>
+
+				<div class="feild">
+					<div id="divResults">[Salary]</div>
+				</div>
+				</div>
+			</div>
+
+
+
+	</script>
+	<style type="text/css">
+		#divResults{
+			
+			font-size:18px;
+			color: red;
+		}
+		h1{
+			 font: italic bold 1.5em Georgia, serif;
+			 color: blue
+		}
+		label{
+			display: block;
+		}
+		.feild{
+			padding:10px;
+		}
+	</style>
+	
+	<script type="text/javascript">	
+
+		
+		String.prototype.toint=function(){
+				return parseInt(this,10);
+
+			};
+
+			function Salarycal1(_data){
+				var _data=_data || [];
+				this.getBasic=function(name){
+					return _data[name];
+
+				}
+				this.setBasic=function(name,value){
+					_data[name]=value;
+					var lisfns=_events[name];
+					lisfns.forEach(function(fn)
+						{
+						 if(typeof fn==='function'){
+							
+							fn();
+						}
+					})
+				}
+
+
+
+				var _events={};
+				
+				this.addEvent=function(name,fun){
+					_events[name]=_events[name] || [] ;
+					_events[name].push(fun);
+				}
+			
+			
+				
+				
+			};
+
+			Salarycal1.prototype.cal1=function(){
+				this.gross=this.getBasic('basic')+this.getBasic('hra')+this.getBasic('da');
+				this.setBasic('salary',(this.gross*((100-this.getBasic('tax'))/100)));
+			};
+			function salaryCalDom(mysal){
+				var $root=this.$root=$('<div></div>');
+				this.init=function(){
+
+							$root.on('change','#txtBasic',function()
+							{
+								mysal.setBasic('basic',this.value.toint());
+							});
+							$root.on('change','#txtBasic',function(){
+								mysal.setBasic('basic',this.value.toint());
+							});
+
+							$root.on('change','#txtHra',function(){
+								mysal.setBasic('hra',this.value.toint());
+							});
+							$root.on('change','#txtDa',function(){
+									mysal.setBasic('da',this.value.toint());
+							});
+							$root.on('change','#rangeTax',function(){
+								mysal.setBasic('tax',this.value.toint());
+							})
+
+							$root.on('click','#btnCalculate',function(){
+							
+									var sal=mysal.cal1();
+								
+							});
+
+
+					}
+				this.addtoDom=function(){
+					this.$root.html($('#calTemp').html());
+
+				}
+				
+				
+				
+				mysal.addEvent('basic',function(){
+						$('#txtBasic',$root).val(mysal.getBasic('basic'));
+
+				});
+
+					mysal.addEvent('hra',function(){
+						$('#txtHra',$root).val(mysal.getBasic('hra'));
+
+				})
+
+				
+					mysal.addEvent('da',function(){
+						$('#txtDa',$root).val(mysal.getBasic('da'));
+
+				})
+
+				
+					mysal.addEvent('tax',function(){
+						$('#rangeTax',$root).val(mysal.getBasic('tax'));
+						$("#spanTax",$root).html(mysal.getBasic('tax'));
+
+				})
+
+				
+			
+				mysal.addEvent('salary',function(){
+						$('#divResults',$root).html(mysal.getBasic('salary'));
+
+				});
+
+
+			}
+
+
+
+
+		$(function(){
+			
+			// var newcal=new Salarycal1({basic:0,har:0,da:0,tax:0,salary:0});
+			// var newcaldom= new salaryCalDom(newcal);
+			// newcaldom.init();
+			// newcaldom.addtoDom();
+			// newcaldom.$root.appendTo(document.body);
+			
+				
+			// var newcaldom2= new salaryCalDom(newcal);
+			// newcaldom2.init();
+			// newcaldom2.addtoDom();
+			// newcaldom2.$root.appendTo(document.body);
+
+				
+
+
+		});
+	
+	</script>
+</head>
+<body>
+	<div>
+		<h1>Salary Calculator</h1>
+		
+
+		
+	</div>
+
+
+
+
+</body>
+</html>

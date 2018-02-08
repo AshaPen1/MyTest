@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>lazyload</title>
+	<style type="text/css">
+		#mainRoot{
+			background-color: red;
+			border:2px solid green;
+			padding: 30px;
+		}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/template" id="listView">
+		<div id="devMain">
+			<span>unitType</span>
+			<input type="button" id="BookBtn" value="book"> 
+		</div>
+
+	
+
+	</script>
+
+	<script type="text/javascript">
+		
+
+		function MyDOM(mytemp){
+		this.$root=$('<div id="mainRoot"></div>');
+			console.log(this.$root);
+			this.$root.html(mytemp);
+			this.$root.on('click','#BookBtn',function(){
+
+				console.log("this is clicked");
+			});
+
+			
+
+
+			console.log("root",this.$root);
+		}
+			
+			
+
+
+			
+		$(function(){
+var mydata={
+	name:"abc",
+	add:"adada"
+}
+
+// 		var mydata={"myobj":[
+//     { "roomType":"one Bed", "price":"10" },
+//     { "roomType":"Anna", "price":"20" },
+//     { "roomType":"Peter", "price":"30" }
+// ]};
+for each (var item in mydata.myobj) {
+  console.log("item",item);
+}
+		var myNewDom=new MyDOM($('#listView').html());
+		$('#root').html(myNewDom.$root);
+		})
+
+
+	</script>
+</head>
+<body>
+	<div id="root">
+		
+	</div>
+	
+</body>
+</html>

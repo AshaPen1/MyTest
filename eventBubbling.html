@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<title></title>
+<style type="text/css">
+		div{
+			padding: 20px;
+		
+			margin: 20px;
+		}
+
+#first{
+	border: 2px solid;
+	background-color:  red;
+}
+#sec{
+
+	border: 2px solid;
+	background-color:  green;
+
+}
+#three{
+	border: 2px solid;
+	background-color:  blue;
+}
+
+
+</style>
+<script type="text/javascript">
+	window.addEventListener('DOMContentLoaded',init);
+	function init(){
+		var nodes=document.querySelectorAll('*');
+		for(var i=0; i<nodes.length;i++){
+
+			nodes[i].addEventListener('click',function(event){
+				console.log("e",event);
+				console.log("this",this);
+
+
+			
+				
+				if(this.id=='first')
+					event.stopPropagation();
+			  })
+		}
+				
+	}
+
+</script>
+</head>
+<body>
+	<div id="first">
+		<span>first1</span>
+		<div id="sec">
+			<span>secound div</span>
+			<div id="three">
+				<span>third div</span>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

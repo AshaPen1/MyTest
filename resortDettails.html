@@ -1,0 +1,1034 @@
+  <div class="col-sm-7 col-md-9 col-xs-12 unit-resort-cont-right padding-right-zero">
+            <!-- resort Highligts -->
+            <div class="col-sm-12 col-xs-12 padding-zero unit-resort-right-top">
+                <c:if test="${null != webResort.resortHighlights}">
+                    <p class="col-sm-12 col-xs-12 padding-zero">
+                        <c:out value='${webResort.resortHighlights}' />
+                    </p>
+                </c:if>
+            </div>
+            <div class="col-sm-12 col-xs-12 padding-zero unit-resort-right-center">
+                <!-- property information -->
+                <div class="col-sm-12 col-xs-12 padding-zero unit-resort-item unit-property">
+                    <h2 class="sectionHeader-Black">
+                        <c:out value='${rci:printOverrideMessageDelimited("RCI_ResortDetails_Weeks_1|RCI_ResortDetails_Points_1|RCI_RDGResortDetails_1","Property Info",pageContext)}' escapeXml='false'/>
+                    </h2>
+                    <div class="col-sm-12 col-xs-12 padding-zero unit-resort-item-content">
+                
+                        <div class="col-sm-12 col-xs-12 padding-zero">
+                            <c:if test="${null != webResort.frontDeskInfoBean}">
+                                <div class="col-sm-4 col-xs-12 padding-zero">
+                                    <h3 class="header-text-medium-x col-sm-12 col-xs-12 padding-left-zero">
+                                        <c:out value='${rci:printOverrideMessageDelimited("RCI_ResortDetails_Weeks_9|RCI_ResortDetails_Points_9|RCI_RDGResortDetails_9","FRONT DESK",pageContext)}' escapeXml='false'/>:
+                                    </h3>
+                                </div> 
+                                <div class="col-sm-8 col-xs-12 padding-zero">
+                                    <ul class="col-sm-12 col-xs-12 padding-zero margin-zero" role="presentation">
+                                        <c:if test="${null != webResort.frontDeskInfoBean.isOnsite}">
+                                            <li class="col-sm-12 col-md-6 col-xs-12 padding-zero" role="presentation">
+                                                <p class="header-text-medium-x pull-left col-sm-7 col-md-6  col-xs-6 padding-left-zero">
+
+                                                <c:out value='${webResort.frontDeskInfoBean.isOnsite}' /> 
+                                                </p>
+                                                 
+                                                <p class="pull-left col-sm-5 col-md-6 col-xs-6 padding-left-zero"></p>
+                                            </li> 
+                                        </c:if>
+
+                                        <c:if test="${null != webResort.frontDeskInfoBean.startTime}">
+                                            <li class="col-sm-12 col-md-6 col-xs-12 padding-zero" role="presentation">
+                                                    <p class="header-text-medium-x pull-left col-sm-7 col-md-6  col-xs-6 padding-left-zero"><c:out value='${webResort.frontDeskInfoBean.startTime}' />
+                                                    </p>
+
+                                            </li>
+                                        </c:if>
+                                        <c:if test="${null != webResort.frontDeskInfoBean.isTwentyFourHour}">
+                                            <li class="col-sm-12 col-md-6 col-xs-12 padding-zero" role="presentation">
+                                                    <p class="header-text-medium-x pull-left col-sm-7 col-md-6  col-xs-6 padding-left-zero"><c:out value='${webResort.frontDeskInfoBean.isTwentyFourHour}' /></p>
+                                            </li>
+                                            <c:set var="col" value="${col+1}"/>
+                                        </c:if>
+                                    </ul>
+                                </div> 
+                            </c:if>
+                                                          <!-- checkin checkout -->
+                            <c:if test="${!empty webResort.checkInCheckOutInfos}">
+                                <c:set var="count" value="0"/>
+                                <div class="col-sm-4 col-xs-12 padding-zero">
+                                    <h3 class="header-text-medium-x col-sm-12 col-xs-12 padding-left-zero">
+                                        <c:out value='${rci:printOverrideMessageDelimited("RCI_ResortDetails_Weeks_10|RCI_ResortDetails_Points_10|RCI_RDGResortDetails_10","Check In Check Out",pageContext)}' escapeXml='false'/>:
+                                    </h3>
+                                </div> 
+                                <div class="col-sm-8 col-xs-12 padding-zero">
+                                    <ul class="col-sm-12 col-xs-12 padding-zero margin-zero" id="propertychekincheckoutinfoListId" role="presentation">
+                                        <c:forEach var="checkInCheckOutInfo" items='${webResort.checkInCheckOutInfos }'>
+                                            <c:set var="count" value="${count+1}"/>
+                                            <c:if test="${count<=5}">
+                                                <li class="col-sm-12 col-md-6 col-xs-12 padding-zero" role="presentation">
+                                            </c:if>
+                                            <c:if test="${count> 5}">
+                                                <li class="col-sm-12 col-md-6 col-xs-12 padding-zero unit-resort-toggle-li" style="display: none;" role="presentation">
+                                            </c:if>
+                                                    <p class="pull-left col-sm-7 col-md-6  col-xs-6 padding-left-zero">
+                                                        <c:out value="${checkInCheckOutInfo}" />
+                                                    </p>
+                                                </li>
+                                        </c:forEach>
+                                        <c:if test="${count>5}">
+                                            <li class="col-sm-12 col-md-6 col-xs-12 padding-zero" role="presentation">
+                                                <p class="header-text-medium-x pull-left col-sm-7 col-md-6  col-xs-6 padding-left-zero">
+                                                    <a id="propertychekincheckoutinfoListShowMoreLessId" class="primary-anchor-small unit-resort-more" href="javascript:toggleResortTextAndContent('propertychekincheckoutinfoListId', 'propertychekincheckoutinfoListShowMoreLessId');">
+                                                        ${rci:printMessage("RCISearch_Weeks_818","Show More","TEXT",pageContext)} + <span class="sr-only">Information</span>
+                                                    </a>
+                                                </p>
+                                            </li>
+                                        </c:if>
+                                    </ul>
+                                </div> 
+                            </c:if>
+                        </div>
+                            <!-- accessibility  -->
+                        <div class="col-sm-12 col-xs-12 padding-zero">
+                            <div class="col-sm-4 col-xs-6 padding-zero">
+                                <h3 class="header-text-medium-x col-sm-12 col-xs-12 padding-left-zero">
+                                    <c:out value='${rci:printOverrideMessageDelimited("RCI_ResortDetails_Weeks_13|RCI_ResortDetails_Points_13|RCI_RDGResortDetails_13","Accessibility Features",pageContext)}' escapeXml='false'/>:</h3>
+                            </div> 
+                            <div class="col-sm-8 col-xs-6 padding-zero">
+                               <ul class="col-sm-12 col-xs-12 padding-zero margin-zero">
+                               
+                                    <c:if test="${null != webResort.accessibility.features}">
+                                        <li class="col-sm-6 col-md-6 col-xs-12 padding-left-zero">
+                                            <p class="padding-zero">
+                                                <c:out value='${webResort.accessibility.features}' />
+                                            </p>
+                                        </li>
+                                    </c:if>
+                                    <c:if test="${null != webResort.accessibility.elevator}">
+                                         <li class="col-sm-6 col-md-6 col-xs-12 padding-left-zero">
+                                            <p class="padding-zero">
+                                                <c:out value='${webResort.accessibility.elevator}' />
+                                            </p>
+                                        </li>
+                                    </c:if>
+                                    <c:if test="${null != webResort.accessibility.accessibleBath}">
+                                        <li class="col-sm-6 col-md-6 col-xs-12 padding-left-zero">
+                                            <p class="padding-zero">
+                                                <c:out value='${webResort.accessibility.accessibleBath}' />
+                                            </p>
+                                        </li>
+                                    </c:if>
+                                    <c:if test="${null != webResort.accessibility.brailleSignage}">
+                                        <li class="col-sm-6 col-md-6 col-xs-12 padding-left-zero">
+                                            <p class="padding-zero">
+                                                <c:out value='${webResort.accessibility.brailleSignage}' />
+                                            </p>
+                                        </li>
+                                    </c:if>
+                                    <c:if test="${null != webResort.accessibility.accessEquipForDeaf}">
+                                        <li class="col-sm-6 col-md-6 col-xs-12 padding-left-zero">
+                                            <p class="padding-zero">
+                                                <c:out value='${webResort.accessibility.accessEquipForDeaf}' />
+                                            </p>
+                                        </li>
+                                    </c:if>
+                                </ul>
+                            </div> 
+                        </div>
+                        <!-- misc info -->
+
+                        <c:if test="${!empty webResort.misc}">
+                            <c:set var="count" value="0"/>
+                                <div class="col-sm-12 col-xs-12 padding-zero">
+                                    <div class="col-sm-4 col-xs-6 padding-zero">
+                                       <h3 class="header-text-medium-x col-sm-12 col-xs-12 padding-left-zero">
+                                        <c:out value='${rci:printOverrideMessageDelimited("RCI_ResortDetails_Weeks_14|RCI_ResortDetails_Points_14|RCI_RDGResortDetails_14","Misc",pageContext)}' escapeXml='false'/>:
+                                       </h3>
+                                    </div> 
+                                    <div class="col-sm-8 col-xs-6 padding-zero">
+                                        <ul class="col-sm-12 col-xs-12 padding-zero margin-zero" id="miscListId">
+                                            <c:forEach var="miscInfo" items='${webResort.misc}'>
+                                                <c:set var="count" value="${count+1}"/>
+                                                <c:if test="${count <= 5}">
+                                                    <li class="col-sm-6 col-md-6 col-xs-12 padding-left-zero">
+                                                        
+                                                </c:if>
+                                                <c:if test="${count > 5}">
+                                                    <li class="col-sm-6 col-md-6 col-xs-12 padding-left-zero unit-resort-toggle-li" style="display: none;">
+                                                </c:if>
+                                                        <p class="padding-zero">
+                                                            <c:out value="${miscInfo}" />
+                                                        </p>
+                                                    </li>
+                                            </c:forEach>
+                                            <c:if test="${count > 5}">
+                                                <li class="col-sm-6 col-md-6 col-xs-12 padding-left-zero" >
+                                                    <p class="padding-zero">
+                                                        <a id="miscListShowMoreLessId" class="primary-anchor-small unit-resort-more" href="javascript:toggleResortTextAndContent('miscListId','miscListShowMoreLessId'">
+                                                         ${rci:printMessage("RCISearch_Weeks_818","Show More","TEXT",pageContext)} + <span class="sr-only">Information</span>
+                                                        </a>
+                                                    </p>
+                                                </li>
+                                            </c:if>
+                                        </ul>
+                                    </div> 
+                                </div>
+                        </c:if>
+                    </div>
+                </div>
+                <!-- Attractions -->
+                <div class="col-sm-12 col-xs-12 padding-zero unit-resort-item">
+                    <h2 class="sectionHeader-Black">
+                        <c:out value='${rci:printOverrideMessageDelimited("RCISearch_Weeks_2|RCISearch_Points_2|RCI_RDGResortDetails_2","Attractions",pageContext)}' escapeXml='false'/>
+                    </h2>
+                     <!-- Attractions Onsite -->
+                    <div class="col-sm-12 col-xs-12 padding-zero unit-resort-item-content">
+                        <c:if test="${!empty webResort.activityListOnsite}">
+                            <c:set var="count" value="0"/>
+                           
+                            <div class="col-sm-12 col-xs-12 padding-zero">
+                                <div class="col-sm-4 col-xs-6 padding-zero">
+                                    <h3 class="header-text-medium-x col-sm-12 col-xs-12 padding-left-zero">
+                                        <c:out value='${rci:printOverrideMessageDelimited("RCI_ResortDetails_Weeks_15|RCI_ResortDetails_Points_15|RCI_RDGResortDetails_15","On Site",pageContext)}' escapeXml='false'/>:
+                                    </h3>
+                                </div> 
+                                <div class="col-sm-8 col-xs-6 padding-zero">
+                                    <ul class="col-sm-12 col-xs-12 padding-zero margin-zero" id="attractionsOnSiteListId">
+                                        <c:forEach var="activityListOnsite" items='${webResort.activityListOnsite}' >
+                                            <c:set var="count" value="${count+1}"/>
+                                                <c:if test="${count <= 5}">
+                                                    <li class="col-sm-6 col-md-4 col-xs-12 padding-left-zero">
+                                                </c:if>
+                                                <c:if test="${count > 5}">
+                                                    <li class="col-sm-6 col-md-4 col-xs-12 padding-left-zero unit-resort-toggle-li" style="display: none">
+                                                </c:if>
+                                                        <p class="padding-zero">
+                                                            <c:out value="${activityListOnsite.name}" />
+                                                       
+                                                    <c:if test="${!empty activityListOnsite.activityDtlsLst}">
+                                                        <c:forEach var="activityDetailsOnsite" items='${activityListOnsite.activityDtlsLst}'>
+                                                            
+                                                            <c:if test="${null != activityDetailsOnsite.name}">
+                                                                        <c:out value="${activityDetailsOnsite.name}" /> : <c:out value="${activityDetailsOnsite.value}" />
+                                                                   
+                                                            </c:if>
+                                                            <c:if test="${null == activityDetailsOnsite.name}">
+                                                                  
+                                                                        <c:out value="${activityDetailsOnsite.value}" />
+                                                                    
+                                                            </c:if>
+                                                            
+                                                        </c:forEach>
+                                                    </c:if>
+                                                </p>
+                                            </li>       
+                                        </c:forEach>
+                                        <c:if test="${count > 5}">
+                                            <li class="col-sm-6 col-md-4 col-xs-12 padding-left-zero">
+                                                <p class="padding-zero">
+                                                    <a id="attractionsOnSiteShowMoreLess" class="primary-anchor-small unit-resort-more" href="javascript:toggleResortTextAndContent('attractionsOnSiteListId', 'attractionsOnSiteShowMoreLess');">
+                                                        ${rci:printMessage("RCISearch_Weeks_818","Show More","TEXT",pageContext)} + <span class="sr-only">Information</span>
+                                                    </a>
+                                                </p>
+                                            </li>
+                                        </c:if>
+                                    </ul>                                                         
+                                </div>
+                            </div>
+                        </c:if>
+                    </div>
+                    <!-- offsite -->
+                    <div class="col-sm-12 col-xs-12 padding-zero ">
+                        <c:if test="${!empty webResort.activityListNearBy}">
+                            <c:set var="count" value="0"/>
+                            <div class="col-sm-12 col-xs-12 padding-zero">
+                                <div class="col-sm-4 col-xs-6 padding-zero">
+                                    <h3 class="header-text-medium-x col-sm-12 col-xs-12 padding-left-zero">
+                                       <c:out value='${rci:printOverrideMessageDelimited("RCI_ResortDetails_Weeks_16|RCI_ResortDetails_Points_16|RCI_RDGResortDetails_16","Near By",pageContext)}' escapeXml='false'/>:
+                                    </h3>
+                                </div> 
+                                <div class="col-sm-8 col-xs-6 padding-zero">
+                                    <ul class="col-sm-12 col-xs-12 padding-zero margin-zero" id="attractionsNearByListId">
+                                        <c:forEach var="activityListNearBy" items='${webResort.activityListNearBy}'>
+                                            <c:set var="count" value="${count+1}"/>
+                                                <c:if test="${count <= 5}">
+                                                    <li class="col-sm-6 col-md-4 col-xs-12 padding-left-zero">
+                                                     <p class="padding-zero">
+                                                </c:if>
+                                                <c:if test="${count >5}">
+                                                    <li class="col-sm-6 col-md-4 col-xs-12 padding-left-zero unit-resort-toggle-li" style="display: none" >
+                                                     <p class="padding-zero">
+                                                </c:if>
+                                                <c:choose>
+                                                    <c:when test="${null != activityListNearBy.proximity && activityListNearBy.proximity == 'Nearby' }">
+                                                           
+                                                                <c:out value="${activityListNearBy.name}" />:
+                                                                <c:out value='${rci:printOverrideMessageDelimited("RCISearch_Weeks_536|RCISearch_Points_535|RCI_RDGResortDetails_79","(Nearby)",pageContext)}' escapeXml='false'/>
+                                                            
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                          
+                                                                <c:out value="${activityListNearBy.name}" />
+                                                            
+                                                    </c:otherwise>
+                                                </c:choose>
+                                                <c:if test="${!empty activityListNearBy.activityDtlsLst}">
+                                                    <c:forEach var="activityDetailsNearBy" items='${activityListNearBy.activityDtlsLst}'>
+                                                       
+                                                        <c:if test="${null != activityDetailsOnsite.name}">
+                                                               
+                                                                    <c:out value="${activityDetailsNearBy.name}" />: 
+                                                                    <c:out value="${activityDetailsNearBy.value}" />
+                                                              
+                                                        </c:if>
+                                                        <c:if test="${null == activityDetailsNearBy.name}">
+                                                                
+                                                                    <c:out value="${activityDetailsNearBy.value}" />
+                                                                
+                                                        </c:if>
+                                                    </c:forEach>
+                                                </c:if>
+                                                </p>
+                                            </li>
+                                        </c:forEach>
+                                        <c:if test="${count > 5}">
+                                            <li class="col-sm-6 col-md-4 col-xs-12 padding-left-zero">
+                                                <p class="padding-zero">
+                                                    <a id="attractionsNearByShowMoreLess" class="primary-anchor-small unit-resort-more" href="javascript:toggleResortTextAndContent('attractionsNearByListId', 'attractionsNearByShowMoreLess');">
+                                                        ${rci:printMessage("RCISearch_Weeks_818","Show More","TEXT",pageContext)} + <span class="sr-only">Information</span>
+                                                    </a>
+                                                </p>
+                                            </li>
+                                        </c:if>
+                                    </ul>                                                         
+                                </div>
+                            </div>
+                        </c:if>
+                    </div>
+                <!-- endoffsite -->
+                    <div class="col-sm-12 col-xs-12 padding-zero unit-resort-item-content">
+                        <c:if test="${!empty webResort.addlActivityList}">
+                            <c:set var="count" value="0"/>
+                            <div class="col-sm-12 col-xs-12 padding-zero">
+                                <div class="col-sm-4 col-xs-6 padding-zero">
+                                    <h3 class="header-text-medium-x col-sm-12 col-xs-12 padding-left-zero">
+                                       <c:out value='${rci:printOverrideMessageDelimited("RCI_ResortDetails_Weeks_59|RCI_ResortDetails_Points_59|RCI_RDGResortDetails_80","Additional Attractions",pageContext)}' escapeXml='false'/>:
+                                    </h3>
+                                </div> 
+                                <div class="col-sm-8 col-xs-6 padding-zero">
+                                    <ul class="col-sm-12 col-xs-12 padding-zero margin-zero" id="attractionsAdditionalListId">
+                                        <c:forEach var="addlRecreation" items='${webResort.addlActivityList}' >
+                                            <c:set var="count" value="${count+1}"/>
+                                                <c:if test="${count <= 5}">
+                                                    <li class="col-sm-6 col-md-4 col-xs-12 padding-left-zero">
+                                                </c:if>
+                                                <c:if test="${count > 5}">
+                                                   <li class="col-sm-6 col-md-4 col-xs-12 padding-left-zero unit-resort-toggle-li" style="display: none;" >
+                                                </c:if>
+                                                        <p class="padding-zero">
+                                                            <c:out value="${addlRecreation.name}" />
+                                                        </p>
+                                                    </li>
+                                                    
+                                        </c:forEach>
+                                        <c:if test="${count > 5}">
+                                            <li class="col-sm-6 col-md-4 col-xs-12 padding-left-zero">
+                                                <p class="padding-zero">
+                                                        <a id="attractionsAdditionalShowMoreLessId" class="primary-anchor-small unit-resort-more" href="javascript:toggleResortTextAndContent('attractionsAdditionalListId', 'attractionsAdditionalShowMoreLessId');">
+                                                            ${rci:printMessage("RCISearch_Weeks_818","Show More","TEXT",pageContext)} + <span class="sr-only">Information</span>
+                                                        </a>
+                                                </p>
+                                            </li>
+                                        </c:if>
+                                    </ul>                                                         
+                                </div>
+                            </div>
+                        </c:if>
+                    </div>
+                </div>
+                <!-- Recreation -->
+                <div class="col-sm-12 col-xs-12 padding-zero unit-resort-item">
+                    <h2 class="sectionHeader-Black">
+                        <c:out value='${rci:printOverrideMessageDelimited("RCI_ResortDetails_Weeks_3|RCI_ResortDetails_Points_3|RCI_RDGResortDetails_3","Recreation",pageContext)}' escapeXml='false'/>
+                    </h2>
+                    <div class="col-sm-12 col-xs-12 padding-zero unit-resort-item-content">
+                        <c:set var="count" value="0"/> 
+                        <c:if test="${!empty webResort.recreationListOnsite}">
+                            <c:set var="count" value="0"/>   
+                            <div class="col-sm-12 col-xs-12 padding-zero">
+                               <div class="col-sm-4 col-xs-6 padding-zero">
+                                   <h3 class="header-text-medium-x col-sm-12 col-xs-12 padding-left-zero">
+                                        <c:out value='${rci:printOverrideMessageDelimited("RCI_ResortDetails_Weeks_15|RCI_ResortDetails_Points_15|RCI_RDGResortDetails_15","On Site",pageContext)}' escapeXml='false'/>:
+                                    </h3>
+                               </div> 
+                                <div class="col-sm-8 col-xs-6 padding-zero">
+                                   <ul class="col-sm-12 col-xs-12 padding-zero margin-zero" id="recreationListOnsiteListId">
+                                        <c:forEach var="recreationListOnsite" items='${webResort.recreationListOnsite}'>
+
+                                            <c:set var="count" value="${count+1}"/>
+                                            
+                                            <c:if test="${count <= 5}">
+                                                <li class="col-sm-6 col-md-4 col-xs-12 padding-left-zero">
+                                            </c:if> 
+                                            <c:if test="${count > 5}">
+                                                <li class="col-sm-6 col-md-4 col-xs-12 padding-left-zero unit-resort-toggle-li" style="display: none">
+                                            </c:if>  
+                                                  
+                                                    <p class="padding-zero">
+                                                        <c:out value="${recreationListOnsite.name}" />
+                                                   
+                                                <c:if test="${!empty recreationListOnsite.activityDtlsLst}">
+                                                    <c:forEach var="recDetailsOnsite" items='${recreationListOnsite.activityDtlsLst}'>
+                                                       
+                                                        <c:if test="${null != recDetailsOnsite.name && null != recDetailsOnsite.value}">
+                                                                
+                                                                    <c:out value="${recDetailsOnsite.name}" /> :
+                                                                    <c:out value="${recDetailsOnsite.value}" />
+                                                             
+                                                        </c:if>
+                                                        <c:if test="${null != recDetailsOnsite.name && null == recDetailsOnsite.value}">
+                                                              
+                                                                    <c:out value="${recDetailsOnsite.name}" />
+                                                              
+                                                        </c:if>
+                                                        <c:if test="${null == recDetailsOnsite.name}">
+                                                              
+                                                                    <c:out value="${recDetailsOnsite.value}" />
+                                                               
+                                                        </c:if>
+                                                    </c:forEach>
+                                                </c:if>
+                                                 </p>
+                                                </li>
+                                          
+                                        </c:forEach>    
+                                        <c:if test="${count > 5}">
+                                            <li class="col-sm-6 col-md-4 col-xs-12 padding-left-zero">
+                                                <p class="padding-zero">
+                                                    <a id="recreationListOnsiteShowMoreLessId" class="primary-anchor-small unit-resort-more" href="javascript:toggleResortTextAndContent('recreationListOnsiteListId', 'recreationListOnsiteShowMoreLessId');">
+                                                    ${rci:printMessage("RCISearch_Weeks_818","Show More","TEXT",pageContext)} + <span class="sr-only">Information</span>
+                                                    </a>
+                                                </p>
+                                            </li>
+                                                            
+                                        </c:if>
+                                    </ul>
+                                </div> 
+                            </div>
+                        </c:if>
+                        <c:if test="${!empty webResort.recreationListNearBy}">
+                            <c:set var="count" value="0"/> 
+                            <div class="col-sm-12 col-xs-12 padding-zero">
+                                <div class="col-sm-4 col-xs-6 padding-zero">
+                                    <h3 class="header-text-medium-x col-sm-12 col-xs-12 padding-left-zero">
+                                        <c:out value='${rci:printOverrideMessageDelimited("RCI_ResortDetails_Weeks_16|RCI_ResortDetails_Points_16|RCI_RDGResortDetails_16","Near By",pageContext)}' escapeXml='false'/>:
+                                    </h3>
+                                </div> 
+                                <div class="col-sm-8 col-xs-6 padding-zero">
+                                    <ul class="col-sm-12 col-xs-12 padding-zero margin-zero" id="recListNearBy">
+                                        <c:forEach var="recreationListNearBy" items='${webResort.recreationListNearBy}'  >
+                                            <c:set var="count" value="${count+1}"/>
+                                            <c:if test="${count <= 5}">
+                                                <li class="col-sm-6 col-md-4 col-xs-12 padding-left-zero">
+                                            </c:if> 
+                                            <c:if test="${count > 5}">
+                                                <li class="col-sm-6 col-md-4 col-xs-12 padding-left-zero unit-resort-toggle-li" style="display: none;">
+                                            </c:if> 
+                                            <p class="padding-zero">
+                                                <c:choose>
+
+                                                    <c:when test="${null != recreationListNearBy.proximity && recreationListNearBy.proximity == 'Nearby' }">
+                                                           
+                                                                <c:out value="${recreationListNearBy.name}" />
+                                                           
+                                                                <c:out value='${rci:printOverrideMessageDelimited("RCISearch_Weeks_536|RCISearch_Points_535|RCI_RDGResortDetails_79","(Nearby)",pageContext)}' escapeXml='false'/>
+                                                          
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                            
+                                                            <c:out value="${recreationListNearBy.name}" />
+                                                        
+                                                    </c:otherwise>
+                                                </c:choose>
+                                          
+                                            <c:if test="${!empty recreationListNearBy.activityDtlsLst}">
+                                                <c:forEach var="recDetailsNearBy" items='${recreationListNearBy.activityDtlsLst}'>
+                                                    
+                                                    <c:if test="${null != recDetailsNearBy.name && null != recDetailsNearBy.value}">
+                                                       
+                                                            <c:out value="${recDetailsNearBy.name}" /> :
+                                                         
+                                                            <c:out value="${recDetailsNearBy.value}" />
+                                                      
+                                                    </c:if>
+                                                    <c:if test="${null != recDetailsNearBy.name && null == recDetailsNearBy.value}">
+                                                       
+                                                            <c:out value="${recDetailsNearBy.name}" />
+                                                      
+                                                    </c:if>
+                                                    <c:if test="${null == recDetailsNearBy.name}">
+                                                       
+                                                            <c:out value="${recDetailsNearBy.value}" />
+                                                         
+                                                    </c:if>
+                                                 
+                                                </c:forEach>
+                                            </c:if>
+                                            </p>
+                                            </li>
+                                        </c:forEach>  
+                                        <c:if test="${count > 5}">
+                                            <li class="col-sm-6 col-md-4 col-xs-12 padding-left-zero">
+                                                <p class="padding-zero">
+                                                        <a id="recListNearByShowMoreLess" class="primary-anchor-small unit-resort-more" href="javascript:toggleResortTextAndContent('recListNearBy', 'recListNearByShowMoreLess');">
+                                                     ${rci:printMessage("RCISearch_Weeks_818","Show More","TEXT",pageContext)} + <span class="sr-only">Information</span>
+                                                    </a>
+                                                </p>
+                                            </li>
+                                        </c:if>
+                                    </ul>  
+                               </div> 
+                            </div>
+                        </c:if> 
+                    </div>
+                </div>
+                <!-- Amenities -->
+                <div class="col-sm-12 col-xs-12 padding-zero unit-resort-item">
+                    <h2 class="sectionHeader-Black">
+                        <c:out value='${rci:printOverrideMessageDelimited("RCI_ResortDetails_Weeks_4|RCI_ResortDetails_Points_4|RCI_RDGResortDetails_4","Property Amenities",pageContext)}' escapeXml='false'/>
+                    </h2>
+                    
+                    <div class="col-sm-12 col-xs-12 padding-zero unit-resort-item-content">
+                        <!-- Amenities onsite -->
+                        <c:if test="${!empty webResort.amenitiesOnsite}">
+                            <c:set var="count" value="0"/>   
+                                <div class="col-sm-12 col-xs-12 padding-zero">
+                                   <div class="col-sm-4 col-xs-6 padding-zero">
+                                        <h3 class="header-text-medium-x col-sm-12 col-xs-12 padding-left-zero">
+                                            <c:out value='${rci:printOverrideMessageDelimited("RCI_ResortDetails_Weeks_15|RCI_ResortDetails_Points_15|RCI_RDGResortDetails_15","On Site",pageContext)}' escapeXml='false'/>:
+                                        </h3>
+                                   </div> 
+                                   <div class="col-sm-8 col-xs-6 padding-zero">
+                                        <ul class="col-sm-12 col-xs-12 padding-zero margin-zero" id="amenitiesOnSiteListId">
+                                            <c:forEach var="amenitiesOnsite" items='${webResort.amenitiesOnsite}' >
+                                                <c:set var="count" value="${count+1}"/>
+                                                    <c:if test="${count <= 5}">
+                                                        <li class="col-sm-6 col-md-4 col-xs-12 padding-left-zero">
+                                                    </c:if>
+                                                    <c:if test="${count > 5}">
+                                                        <li class="col-sm-6 col-md-4 col-xs-12 padding-left-zero unit-resort-toggle-li" style="display: none;">
+                                                    </c:if>
+                                                        <p class="padding-zero">
+                                                            <c:out value="${amenitiesOnsite.name}" />
+                                                       
+                                                    <c:if test="${!empty amenitiesOnsite.amenitiesDtlsLst}">
+                                                        <c:forEach var="amenitiesDtlsLst" items='${amenitiesOnsite.amenitiesDtlsLst}'>
+                                                            
+                                                            <c:if test="${null != amenitiesDtlsLst.name && null != amenitiesDtlsLst.value}">
+                                                                  
+                                                                        <c:out value="${amenitiesDtlsLst.name}" /> :
+                                                                        <c:out value="${amenitiesDtlsLst.value}" />
+                                                                    
+                                                            </c:if>
+                                                            <c:if test="${null != amenitiesDtlsLst.name && null == amenitiesDtlsLst.value}}">
+                                                                    
+                                                                        <c:out value="${amenitiesDtlsLst.name}" />
+                                                                    
+                                                            </c:if>
+                                                            <c:if test="${null == amenitiesDtlsLst.name}">
+                                                                  
+                                                                        <c:out value="${amenitiesDtlsLst.value}" />
+                                                                   
+                                                            </c:if>
+                                                         
+                                                        </c:forEach>
+                                                    </c:if>
+                                                </p>
+                                            </li>
+                                            </c:forEach>
+                                            <c:if test="${count > 5}">
+                                                <li class="col-sm-6 col-md-4 col-xs-12 padding-left-zero">
+                                                    <p class="padding-zero">
+                                                        <a id="amenitiesOnSiteListShowMoreLessId" class="primary-anchor-small unit-resort-more" href="javascript:toggleResortTextAndContent('amenitiesOnSiteListId', 'amenitiesOnSiteListShowMoreLessId');">
+                                                            ${rci:printMessage("RCISearch_Weeks_818","Show More","TEXT",pageContext)} + <span class="sr-only">Information</span>
+                                                        </a>
+                                                    </p>
+                                                </li>
+                                            </c:if>                
+                                        </ul>                                                         
+                                    </div> 
+                                </div>
+                        </c:if>
+                        <!-- Amenities near by -->
+                        <c:if test="${!empty webResort.amenitiesNearBy}">
+                            <c:set var="count" value="0"/>
+                            <div class="col-sm-12 col-xs-12 padding-zero">
+                               <div class="col-sm-4 col-xs-6 padding-zero">
+                                   <h3 class="header-text-medium-x col-sm-12 col-xs-12 padding-left-zero">
+                                        <c:out value='${rci:printOverrideMessageDelimited("RCI_ResortDetails_Weeks_16|RCI_ResortDetails_Points_16|RCI_RDGResortDetails_16","Near By",pageContext)}' escapeXml='false'/>:
+                                    </h3>
+                               </div> 
+                               <div class="col-sm-8 col-xs-6 padding-zero">
+                                    <ul class="col-sm-12 col-xs-12 padding-zero margin-zero" id="amenitiesListNearById">
+                                        <c:forEach var="amenitiesNearBy" items='${webResort.amenitiesNearBy}' >
+                                            <c:set var="count" value="${count+1}"/>
+                                            <c:if test="${count <= 5}">
+                                                <li class="col-sm-6 col-md-4 col-xs-12 padding-left-zero">
+                                            </c:if>
+                                            <c:if test="${count > 5}">
+                                                <li class="col-sm-6 col-md-4 col-xs-12 padding-left-zero unit-resort-toggle-li" style="display: none;">
+                                            </c:if>
+                                              <p class="padding-zero">
+                                            <c:choose>
+                                                <c:when test="${null != amenitiesNearBy.proximity && amenitiesNearBy.proximity == 'Nearby' }">
+                                                      
+                                                            <c:out value="${amenitiesNearBy.name}" />
+                                                      
+                                                            <c:out value='${rci:printOverrideMessageDelimited("RCISearch_Weeks_536|RCISearch_Points_535|RCI_RDGResortDetails_79","(Nearby)",pageContext)}' escapeXml='false'/>
+                                                       
+                                                </c:when>
+                                                <c:otherwise>
+                                                      
+                                                            <c:out value="${amenitiesNearBy.name}" />
+                                                       
+                                                </c:otherwise>
+                                            </c:choose>
+                                            <c:if test="${!empty amenitiesNearBy.amenitiesDtlsLst}">
+                                                <c:forEach var="amenitiesDtlsLstNB" items='${amenitiesNearBy.amenitiesDtlsLst}'>
+                                                   
+                                                    <c:if test="${null != amenitiesDtlsLstNB.name && null != amenitiesDtlsLstNB.value}">
+                                                          
+                                                                <c:out value="${amenitiesDtlsLstNB.name}" /> : <c:out value="${amenitiesDtlsLstNB.value}" />
+                                                           
+                                                    </c:if>
+                                                    <c:if test="${null != amenitiesDtlsLstNB.name && null == amenitiesDtlsLstNB.value}">
+                                                           
+                                                                <c:out value="${amenitiesDtlsLstNB.name}" />
+                                                           
+                                                    </c:if>
+                                                    <c:if test="${null == amenitiesDtlsLstNB.name}">
+                                                           
+                                                                <c:out value="${amenitiesDtlsLstNB.value}" />
+                                                          
+                                                    </c:if>
+                                                </c:forEach>
+                                        
+                                            </c:if>
+                                          </p>
+                                        </li>
+                                        </c:forEach>
+                                        <c:if test="${count > 5}">
+                                            <li class="col-sm-6 col-md-4 col-xs-12 padding-left-zero">
+                                                <p class="padding-zero">
+                                                    <a id="amenitiesNearByShowMoreLessId" class="primary-anchor-small unit-resort-more" href="javascript:toggleResortTextAndContent('amenitiesListNearById', 'amenitiesNearByShowMoreLessId');">
+                                                        ${rci:printMessage("RCISearch_Weeks_818","Show More","TEXT",pageContext)} + <span class="sr-only">Information</span>
+                                                    </a>
+                                                </p>
+                                            </li>
+                                        </c:if>
+                                    </ul>                                                         
+                                </div> 
+                            </div>
+                        </c:if>
+                    </div>
+                    
+                </div>
+                <!-- Resort Services -->
+                <div class="col-sm-12 col-xs-12 padding-zero unit-resort-item">
+                    <h2 class="sectionHeader-Black">
+                        <c:out value='${rci:printOverrideMessageDelimited("RCI_ResortDetails_Weeks_5|RCI_ResortDetails_Points_5|RCI_RDGResortDetails_5","Resort Services",pageContext)}' escapeXml='false'/>
+                    </h2>
+                    <div class="col-sm-12 col-xs-12 padding-zero unit-resort-item-content">
+                        <!-- Resort Services onsite -->
+                        <c:if test="${!empty webResort.serAmenitiesOnsite}">
+                            <c:set var="count" value="0"/>
+                            <div class="col-sm-12 col-xs-12 padding-zero">
+                                <div class="col-sm-4 col-xs-6 padding-zero">
+                                    <h3 class="header-text-medium-x col-sm-12 col-xs-12 padding-left-zero">
+                                        <c:out value='${rci:printOverrideMessageDelimited("RCI_ResortDetails_Weeks_15|RCI_ResortDetails_Points_15|RCI_RDGResortDetails_15","On Site",pageContext)}' escapeXml='false'/>:
+                                    </h3>
+                                </div> 
+                                <div class="col-sm-8 col-xs-6 padding-zero">
+                                    <ul class="col-sm-12 col-xs-12 padding-zero margin-zero" id="resortServicesOnSiteListId">
+                                        <c:forEach var="serAmenitiesOnsite" items='${webResort.serAmenitiesOnsite}'   >
+                                            <c:set var="count" value="${count+1}"/>
+                                            <c:if test="${count <= 5}">
+                                                <li class="col-sm-6 col-md-4 col-xs-12 padding-left-zero ">
+                                            </c:if>
+                                            <c:if test="${count > 5}">
+                                                <li class="col-sm-6 col-md-4 col-xs-12 padding-left-zero unit-resort-toggle-li" style="display: none">
+                                            </c:if>
+                                                <p class="padding-zero">           
+                                                    <c:out value="${serAmenitiesOnsite.name}" />
+                                                 
+                                            <c:if test="${!empty serAmenitiesOnsite.amenitiesDtlsLst}">
+                                                <c:forEach var="serAmenitiesDtlsLst" items='${serAmenitiesOnsite.amenitiesDtlsLst}'>
+                                                   
+                                                    <c:if test="${null != serAmenitiesDtlsLst.name && null != serAmenitiesDtlsLst.value}">
+                                                          
+                                                                <c:out value="${serAmenitiesDtlsLst.name}" /> : <c:out value="${serAmenitiesDtlsLst.value}" />
+                                                           
+                                                    </c:if>
+                                                    <c:if test="${null != serAmenitiesDtlsLst.name && null == serAmenitiesDtlsLst.value}">
+                                                           
+                                                                <c:out value="${serAmenitiesDtlsLst.name}" />
+                                                           
+                                                    </c:if>
+                                                    <c:if test="${null == serAmenitiesDtlsLst.name}">
+                                                          
+                                                                <c:out value="${serAmenitiesDtlsLst.value}" />
+                                                           
+                                                    </c:if>
+                                                </c:forEach>
+                                            </c:if>
+                                             </p>
+                                         </li>          
+                                        </c:forEach>
+                                        <c:if test="${count > 5}">
+                                            <li class="col-sm-6 col-md-4 col-xs-12 padding-left-zero">
+                                                <p class="padding-zero">
+                                                    <a id="resortServicesOnSiteShowMoreLess" class="primary-anchor-small unit-resort-more" href="javascript:toggleResortTextAndContent('resortServicesOnSiteListId', 'resortServicesOnSiteShowMoreLess');">   ${rci:printMessage("RCISearch_Weeks_818","Show More","TEXT",pageContext)} + <span class="sr-only">Information</span>
+                                                    </a>
+                                                </p>
+                                            </li>
+                                        </c:if> 
+                                    </ul>                                                         
+                                </div> 
+                            </div>
+                        </c:if>
+                        <!-- Resort Services near by -->
+                        <c:if test="${!empty webResort.serAmenitiesNearBy}">
+                            <c:set var="count" value="0"/>
+                            <div class="col-sm-12 col-xs-12 padding-zero">
+                               <div class="col-sm-4 col-xs-6 padding-zero">
+                                   <h3 class="header-text-medium-x col-sm-12 col-xs-12 padding-left-zero">
+                                        <c:out value='${rci:printOverrideMessageDelimited("RCI_ResortDetails_Weeks_16|RCI_ResortDetails_Points_16|RCI_RDGResortDetails_16","Near By",pageContext)}' escapeXml='false'/>:
+                                    </h3>
+                               </div> 
+                                <div class="col-sm-8 col-xs-6 padding-zero">
+                                    <ul class="col-sm-12 col-xs-12 padding-zero margin-zero" id="resortServicesnearByListId">
+                                        <c:forEach var="serAmenitiesNearBy" items='${webResort.serAmenitiesNearBy}' end='4' >
+                                            <c:set var="count" value="${count+1}"/>
+                                            <c:if test="${count <= 5}">
+                                                <li class="col-sm-6 col-md-4 col-xs-12 padding-left-zero">
+                                            </c:if>
+                                            <c:if test="${count > 5}">
+                                                <li class="col-sm-6 col-md-4 col-xs-12 padding-left-zero unit-resort-toggle-li" style="display: none">
+                                            </c:if> 
+                                             <p class="padding-zero">                                  
+                                            <c:choose>
+                                                <c:when test="${null != serAmenitiesNearBy.proximity && serAmenitiesNearBy.proximity == 'Nearby' }">
+                                                           
+                                                                <c:out value="${serAmenitiesNearBy.name}" />
+                                                           
+                                                                <c:out value='${rci:printOverrideMessageDelimited("RCISearch_Weeks_536|RCISearch_Points_535|RCI_RDGResortDetails_79","(Nearby)",pageContext)}' escapeXml='false'/>
+                                                           
+                                                </c:when>
+                                                <c:otherwise>
+                                                       
+                                                            <c:out value="${serAmenitiesNearBy.name}" />
+                                                        
+                                                </c:otherwise>
+                                            </c:choose>
+                                            <c:if test="${!empty serAmenitiesNearBy.amenitiesDtlsLst}">
+                                                <c:forEach var="serAmenitiesDtlsLstNB" items='${serAmenitiesNearBy.amenitiesDtlsLst}'>
+                                                      
+                                                    <c:if test="${null != serAmenitiesDtlsLstNB.name && null != serAmenitiesDtlsLstNB.value}">
+                                                            
+                                                                <c:out value="${serAmenitiesDtlsLstNB.name}" /> :
+                                                                <c:out value="${serAmenitiesDtlsLstNB.value}" />
+                                                        
+                                                    </c:if>
+                                                    <c:if test="${null != serAmenitiesDtlsLstNB.name && null == serAmenitiesDtlsLstNB.value}">
+                                                           
+                                                                <c:out value="${serAmenitiesDtlsLstNB.name}" />
+                                                          
+                                                    </c:if>
+                                                    <c:if test="${null == serAmenitiesDtlsLstNB.name}">
+                                                          
+                                                                <c:out value="${serAmenitiesDtlsLstNB.value}" />
+                                                         
+                                                    </c:if>
+                                                </c:forEach>
+                                            </c:if>
+                                        
+                                          </p>
+                                        </li>
+                                        </c:forEach>
+                                        <c:if test="${count > 5}">
+                                            <li class="col-sm-6 col-md-4 col-xs-12 padding-left-zero">
+                                                <p class="padding-zero">
+                                                    <a id="resortServicesnearByShowMoreLessId" class="primary-anchor-small unit-resort-more" href="javascript:toggleResortTextAndContent('resortServicesnearByListId', 'resortServicesnearByShowMoreLessId');">
+                                                       ${rci:printMessage("RCISearch_Weeks_818","Show More","TEXT",pageContext)} + <span class="sr-only">Information</span>
+                                                    </a>
+                                                </p>
+                                            </li>
+                                        </c:if>
+                                    </ul>                                                         
+                                   
+                                </div> 
+                            </div>
+                        </c:if>
+                    </div>
+                        
+                </div>
+                <!-- Dining -->
+                <div class="col-sm-12 col-xs-12 padding-zero unit-resort-item">
+                    <h2 class="sectionHeader-Black">
+                        <c:out value='${rci:printOverrideMessageDelimited("RCI_ResortDetails_Weeks_6|RCI_ResortDetails_Points_6|RCI_RDGResortDetails_6","Restaurant &amp; Dining",pageContext)}' escapeXml='false'/>
+                    </h2>
+                    <!-- Dining onsite -->
+                    <c:if test="${!empty webResort.onsiteDining}">
+                        <c:set var="count" value="0"/>
+                        <div class="col-sm-12 col-xs-12 padding-zero unit-resort-item-content">
+                            <div class="col-sm-12 col-xs-12 padding-zero">
+                               <div class="col-sm-4 col-xs-6 padding-zero">
+                                   <h3 class="header-text-medium-x col-sm-12 col-xs-12 padding-left-zero">
+                                        <c:out value='${rci:printOverrideMessageDelimited("RCI_ResortDetails_Weeks_15|RCI_ResortDetails_Points_15|RCI_RDGResortDetails_15","On Site",pageContext)}' escapeXml='false'/>:
+                                    </h3>
+                               </div> 
+                               <div class="col-sm-8 col-xs-6 padding-zero">
+                                    <ul class="col-sm-12 col-xs-12 padding-zero margin-zero" id="diningOnsiteListId">
+                                        <c:forEach var="restDiningonsite" items='${webResort.onsiteDining }'>
+                                            <c:set var="count" value="${count+1}"/>
+                                                <c:if test="${count <= 5}">
+                                                    <li class="col-sm-6 col-md-4 col-xs-12 padding-left-zero">
+                                                </c:if>
+                                                 <c:if test="${count > 5}">
+                                                    <li class="col-sm-6 col-md-4 col-xs-12 padding-left-zero unit-resort-toggle-li" style="display: none">
+                                                </c:if>
+                                                    <c:choose>
+                                                        <c:when test="${fn:contains(restDiningonsite, '||')}">
+                                                            <c:set var="restValue" value="${fn:split(restDiningonsite, '||')}" />
+                                                                    <p class="padding-zero">
+                                                                        <c:out value="${restValue[0]}" />
+                                                                      
+                                                                        <c:out value="${restValue[1]}" />
+                                                                    </p>
+                                                                </li>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                                <p class="padding-zero">
+                                                                    <c:out value="${restDiningonsite}" />
+                                                                </p>
+                                                             </li>
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                        </c:forEach>
+                                        <c:if test="${count > 5}">
+                                            <li class="col-sm-6 col-md-4 col-xs-12 padding-left-zero">
+                                                <p class="padding-zero">
+                                                    <a id="diningOnsiteShowMoreLessId" class="primary-anchor-small unit-resort-more" href="javascript:toggleResortTextAndContent('diningOnsiteListId', 'diningOnsiteShowMoreLessId');">
+                                                     ${rci:printMessage("RCISearch_Weeks_818","Show More","TEXT",pageContext)} + <span class="sr-only">Information</span>
+                                            </a>
+                                                </p>
+                                            </li>
+                                        </c:if>
+                                    </ul>                                                         
+                               </div> 
+                            </div>
+                        </div>
+                    </c:if>
+                    <!-- Dining near by -->
+                    <c:if test="${null != webResort.nearByDining}">
+                        <c:set var="count" value="0"/>
+                        <div class="col-sm-12 col-xs-12 padding-zero unit-resort-item-content">
+                            <div class="col-sm-12 col-xs-12 padding-zero">
+                               <div class="col-sm-4 col-xs-6 padding-zero">
+                                   <h3 class="header-text-medium-x col-sm-12 col-xs-12 padding-left-zero">
+                                        <c:out value='${rci:printOverrideMessageDelimited("RCI_ResortDetails_Weeks_16|RCI_ResortDetails_Points_16|RCI_RDGResortDetails_16","Near By",pageContext)}' escapeXml='false'/>:
+                                    </h3>
+                               </div> 
+                               <div class="col-sm-8 col-xs-6 padding-zero">
+                                    <ul class="col-sm-12 col-xs-12 padding-zero margin-zero" id="diningListNearById">
+                                        <c:forEach var="restDiningNearBy" items='${webResort.nearByDining }'>
+                                            <c:set var="count" value="${count+1}"/>
+                                                <c:if test="${count <= 5}">
+                                                    <li class="col-sm-6 col-md-4 col-xs-12 padding-left-zero">
+                                                </c:if>
+                                                <c:if test="${count >5}">
+                                                    <li class="col-sm-6 col-md-4 col-xs-12 padding-left-zero unit-resort-toggle-li" style="display: none">
+                                                </c:if>
+                                                <c:choose>
+                                                    <c:when test="${fn:contains(restDiningNearBy, '||')}">
+                                                        <c:set var="restValueNearBy" value="${fn:split(restDiningNearBy, '||')}" />
+                                                            <p class="padding-zero">
+                                                                <c:out value="${restValueNearBy[0]}" />
+                                                              
+                                                                    <c:out value="${restValueNearBy[1]}" />
+                                                            </p>
+                                                        </li>       
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                                <p class="padding-zero">
+                                                                    <c:out value="${restDiningNearBy}" />
+                                                                </p>
+                                                            </li>
+                                                        </c:otherwise>
+                                                   </c:choose>
+                                        </c:forEach>
+                                        <c:if test="${count > 5}">
+                                            <li class="col-sm-6 col-md-4 col-xs-12 padding-left-zero" >
+                                                <p class="padding-zero">
+                                                    <a id="diningListNearByShowMoreLessId" class="primary-anchor-small unit-resort-more" href="javascript:toggleResortTextAndContent('diningListNearById', 'diningListNearByShowMoreLessId');">
+                                                        ${rci:printMessage("RCISearch_Weeks_818","Show More","TEXT",pageContext)} + <span class="sr-only">Information</span>
+                                                    </a>
+                                                </p>
+                                            </li>
+                                        </c:if>
+                                    </ul>                                                         
+                                </div> 
+                            </div>
+                        </div>
+                    </c:if>
+                    <!-- endoffsite -->
+                </div>
+                <!-- transportation  -->
+
+                <div class="col-sm-12 col-xs-12 padding-zero unit-resort-item">
+                    <h2 class="sectionHeader-Black">
+                        <c:out value='${rci:printOverrideMessageDelimited("RCI_ResortDetails_Weeks_7|RCI_ResortDetails_Points_7|RCI_RDGResortDetails_7","Locations",pageContext)}' escapeXml='false'/>
+                    </h2>
+                    <!--transportation Parking  -->
+                    <div class="col-sm-12 col-xs-12 padding-zero unit-resort-item-content">
+                        <c:if test="${!empty webResort.transportation && webResort.transportation.display}">
+                            <c:if test="${!empty webResort.transportation}"> 
+                                <c:set var="count" value="0"/>  
+                                <div class="col-sm-12 col-xs-12 padding-zero">
+
+                                   <div class="col-sm-4 col-xs-6 padding-zero">
+                                       <h3 class="header-text-medium-x col-sm-12 col-xs-12 padding-left-zero"><c:out value='${rci:printOverrideMessageDelimited("RCI_ResortDetails_Weeks_17|RCI_ResortDetails_Points_17|RCI_RDGResortDetails_17","Transportation and Parking",pageContext)}' escapeXml='false'/>:</h3>
+                                   </div> 
+
+                                   <div class="col-sm-8 col-xs-6 padding-zero">
+                                        <ul class="col-sm-12 col-xs-12 padding-zero margin-zero" id="locationsListOnsiteId">
+                                            <c:forEach var="strTransportation" items='${webResort.transportation.transportationList }'>
+                                                <c:set var="count" value="${count+1}"/>
+                                                    <c:if test="${count <= 5}">
+                                                        <li class="col-sm-6 col-md-4 col-xs-12 padding-left-zero">
+                                                    </c:if>  
+                                                    <c:if test="${count > 5}">
+                                                        <li class="col-sm-6 col-md-4 col-xs-12 padding-left-zero unit-resort-toggle-li" style="display: none">
+                                                    </c:if>    
+                                                            <p class="padding-zero">
+                                                                <c:out value="${strTransportation}" />
+                                                            </p>
+                                                        </li>
+                                            </c:forEach>
+                                            <c:if test="${count > 5}">
+                                                 <li class="col-sm-6 col-md-4 col-xs-12 padding-left-zero">
+                                                    <p class="padding-zero">
+                                                        <a id="locationsListOnsiteShowMoreLessId" class="primary-anchor-small unit-resort-more" href="javascript:toggleResortTextAndContent('locationsListOnsiteId', 'locationsListOnsiteShowMoreLessId');">
+
+                                                                            ${rci:printMessage("RCISearch_Weeks_818","Show More","TEXT",pageContext)} + <span class="sr-only">Information</span>
+                                                        </a>
+                                                    </p>
+                                                </li>
+                                            </c:if>
+
+                                        </ul>                                                  
+                                       
+                                   </div> 
+                                </div>
+                            </c:if>
+                        </c:if>
+                    </div>
+                    
+                </div>
+
+                <!--resort  Contact info -->
+                <div class="col-sm-12 col-xs-12 padding-zero unit-resort-item">
+                    <h2 class="sectionHeader-Black">
+                        <c:out value='${rci:printOverrideMessageDelimited("RCI_ResortDetails_Weeks_8|RCI_ResortDetails_Points_8|RCI_RDGResortDetails_8","Resort Contact",pageContext)}' escapeXml='false'/>
+                    </h2>
+                    <div class="col-sm-12 col-xs-12 padding-zero unit-resort-item-content">
+                        <div class="col-sm-12 col-xs-12 padding-zero">
+                            <div class="col-sm-6 col-md-4 col-xs-12 padding-zero unit-resort-address">
+                                <p class="col-sm-12 col-xs-12 padding-zero">
+                                    <c:out value="${webResort.resortName}" />&nbsp;
+                                    (#<c:out value="${webResort.resortID}" />)
+                                    <br>
+                                    <c:if test="${null != webResort.addressLine1}">
+                                        <c:out value="${webResort.addressLine1}" />
+                                        <br />
+                                    </c:if>
+                                    <c:if test="${null != webResort.addressLine2}">
+                                        <c:out value="${webResort.addressLine2}" />
+                                        <br />
+                                    </c:if>
+                                    <c:if test="${null != webResort.addressLine3}">
+                                        <c:out value="${webResort.addressLine3}" />
+                                        <br />
+                                    </c:if>
+                                    <c:if test="${null != webResort.addressLine4}">
+                                        <c:out value="${webResort.addressLine4}" />
+                                        <br />
+                                    </c:if>
+                                    <c:if test="${webResort.state == null}">
+                                        <c:if test="${webResort.city != null}">
+                                            ${webResort.city},&nbsp;
+                                        </c:if>
+                                        <c:if test="${webResort.island != null}">
+                                            ${webResort.island},&nbsp;
+                                        </c:if>
+                                        <c:if test="${webResort.country != null}">
+                                            ${webResort.country}&nbsp;
+                                        </c:if>
+                                        <c:if test="${webResort.postalCode != null}">
+                                            ${webResort.postalCode}
+                                        </c:if>
+                                    </c:if>
+                                    <c:if test="${webResort.state != null}">
+                                        <c:if test="${webResort.city != null}">
+                                            ${webResort.city},&nbsp;
+                                        </c:if>
+                                        ${webResort.state}&nbsp;
+                                        <c:if test="${webResort.postalCode != null}">
+                                            ${webResort.postalCode}
+                                        </c:if>
+                                        <br>
+                                        <c:if test="${webResort.country != null}">
+                                            ${webResort.country}
+                                        </c:if>
+                                    </c:if>
+                                </p>
+                                <p class="col-sm-12 col-xs-12 padding-zero">
+                                    <c:if test="${null != webResort.phone}">
+                                        <c:out value="${webResort.phone}" />
+                                    </c:if>
+                                </p>
+                                <p class="col-sm-12 col-xs-12 padding-zero">
+                                    <c:if test="${null != webResort.resortFax}">
+                                       <c:out value="${webResort.resortFax}" />
+                                    </c:if>
+                                </p>
+                                <p class="col-sm-12 col-xs-12 padding-zero">
+                                    <c:if test="${null != webResort.resortEmail}">
+									 <a href="mailto:${webResort.resortEmail}" class="primary-anchor-small unit-resort-more">
+												<span class="sr-only">send email to : </span>
+                                        <c:out value="${webResort.resortEmail}" />
+										</a>
+                                    </c:if>
+                                </p>
+                           </div> 
+                        </div>
+                        <div class="col-sm-12 col-xs-12 padding-zero">
+                            <div class="col-sm-12 col-md-12 col-xs-12 padding-zero margin-top-medium unit-row">
+                                <c:if test="${null != webResort.URL}">
+									<div class="website-icon"><img src="<%=URLBuilder.getUrl(request)%>/images/commonResponsive/rci-website.png" alt=""/></div>
+                                   
+                                        <a href="http://${webResort.URL}" target="_blank"  class="primary-anchor-small website-link" >
+                                        <c:out value="${webResort.URL}" /><span class="sr-only">Opens in a new window</span>
+                                       
+                                    </a>
+                                </c:if>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>        
+        </div>
+    </div>
+
+      
+
+</div>
